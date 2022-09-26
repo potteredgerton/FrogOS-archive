@@ -1,0 +1,6 @@
+v0.1
+
+UPDATES:
+
+- Added window functionality
+- Added the time to the taskbar
