@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Browser</title>
+  <meta name="description" content="FrogOS iFrame Browser">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src='https://rawcdn.githack.com/nextapps-de/winbox/0.2.0/dist/winbox.bundle.js'></script>
+  <script src="/browser/js/draggability.js" type="module"></script>
+  <script src="/browser/js/index.js" type="module"></script>
+  <link href="/browser/css/main.css" rel="stylesheet">
+  <script>document.documentElement.classList.add("dark");</script>
+</head>
+
+<body class="dark-theme">
+  <div class="chrome-tabs" style="--tab-content-margin: 9px">
+    <div class="chrome-tabs-content">
+    </div>
+    <div class="new-tab-button-wrapper">
+      <button class="new-tab-button">&#65291;</button>
+    </div>
+    <div class="chrome-tabs-bottom-bar"></div>
+  </div>
+  <div id="contextMenu" class="context-menu" style='z-index: 50;'>
+    <ul>
+      <li class='closeta'>Close (CTRL-W)</li>
+      <li class="separator"></li>
+      <li class='reloadta'>Reload (CTRL-R)</li>
+    </ul>
+  </div>
+  <div class="browser-bar" style='height: auto;'>
+    <div id="pageBack" style='align-self: self-start;'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill-rule="evenodd"
+        class="browser-bar-btn browser-bar-btn-disabled" viewBox="0 0 32 32">
+        <path stroke-width="0px" stroke-linecap="round" shape-rendering="geometricPrecision"
+          d="M 4.22 14.03 C 3.53 14.15 3 14.77 3 15.5 C 3 16.25 3.53 16.86 4.24 16.98 L 4.02 17.19 L 14.36 27.51 C 14.65 27.81 15.05 28 15.5 28 C 16.33 28 17 27.33 17 26.5 C 17 26.05 16.8 25.65 16.49 25.38 L 16.55 25.32 L 8.22 17 L 27.51 17 C 28.33 17 29 16.33 29 15.5 C 29 14.67 28.33 14 27.51 14 L 8.2 14 L 16.55 5.66 C 16.81 5.34 17 4.94 17 4.5 C 17 3.68 16.33 3 15.5 3 C 15.06 3 14.66 3.2 14.39 3.5 L 14.36 3.47 L 4 13.81 Z">
+        </path>
+      </svg>
+    </div>
+    <div style="height: 1px; width: 5px;"></div>
+    <div id="pageForward" style='align-self: self-start;'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill-rule="evenodd"
+        class="browser-bar-btn browser-bar-btn-disabled" viewBox="0 0 32 32">
+        <path stroke-width="0px" stroke-linecap="round" shape-rendering="geometricPrecision"
+          d="M 27.78 14.03 C 28.47 14.15 29 14.77 29 15.5 C 29 16.25 28.47 16.86 27.76 16.98 L 27.98 17.19 L 17.64 27.51 C 17.35 27.81 16.95 28 16.5 28 C 15.67 28 15 27.33 15 26.5 C 15 26.05 15.2 25.65 15.51 25.38 L 15.45 25.32 L 23.78 17 L 4.49 17 C 3.67 17 3 16.33 3 15.5 C 3 14.67 3.67 14 4.49 14 L 23.8 14 L 15.45 5.66 C 15.19 5.34 15 4.94 15 4.5 C 15 3.68 15.67 3 16.5 3 C 16.94 3 17.34 3.2 17.61 3.5 L 17.64 3.47 L 28 13.81 Z">
+        </path>
+      </svg>
+    </div>
+    <div style="height: 1px; width: 5px;"></div>
+    <div id="pageReload" style='align-self: self-start;'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill-rule="evenodd"
+        class="browser-bar-btn browser-bar-btn-enabled" viewBox="0 0 32 32">
+        <path stroke-width="0px" stroke-linecap="round" shape-rendering="geometricPrecision"
+          d="M 25.1 20.15 L 25.08 20.14 C 23.51 23.59 20.04 26 16 26 C 10.48 26 6 21.52 6 16 C 6 10.48 10.48 6 16 6 C 19.02 6 21.72 7.34 23.55 9.45 L 23.55 9.45 L 19 14 L 25.8 14 L 28.83 14 L 30 14 L 30 3 L 25.67 7.33 C 23.3 4.67 19.85 3 16 3 C 8.82 3 3 8.82 3 16 C 3 23.18 8.82 29 16 29 C 21.27 29 25.8 25.86 27.84 21.34 C 27.96 21.13 28.03 20.88 28.03 20.61 C 28.03 19.78 27.36 19.11 26.53 19.11 C 25.87 19.11 25.3 19.55 25.1 20.15 Z">
+        </path>
+      </svg>
+    </div>
+    <div style="height: 1px; width: 8px;"></div>
+    <div class="addressbar"
+      style='outline: none; background-color: rgb(241, 243, 244);align-self: self-start;border: 2.5px solid #2767a9 !important;'>
+      <div style="height: 1px; width: 5px;"></div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill-rule="evenodd"
+        class="browser-bar-btn addressbar-btn" viewBox="0 0 20 20">
+        <path stroke-width="0px" stroke-linecap="round" shape-rendering="geometricPrecision"
+          d="M 9 14 h 2 v -4 H 9 v 4 Z m 1 -12 c -4.42 0 -8 3.58 -8 8 c 0 4.42 3.58 8 8 8 c 4.42 0 8 -3.58 8 -8 c 0 -4.42 -3.58 -8 -8 -8 Z m 0 14 c -3.31 0 -6 -2.69 -6 -6 c 0 -3.31 2.69 -6 6 -6 c 3.31 0 6 2.69 6 6 c 0 3.31 -2.69 6 -6 6 Z M 9 8 h 2 V 6 H 9 v 2 Z">
+        </path>
+      </svg>
+      <div class="addressbar-urlbar" style='color: black' contenteditable="true" spellcheck="false" id='proi'></div>
+    </div>
+    <div class='bookmarktab' style='align-self: self-start;'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-bookmark-star"
+        viewBox="0 0 16 16" style='filter: invert(1)'>
+        <path
+          d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z" />
+        <path
+          d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+      </svg>
+    </div>
+    <script>
+      const ta = document.querySelector('.bookmarktab');
+      function eqe() {
+        const ife = document.querySelector('iframe[active]')
+        var bookmarksLocal = localStorage.getItem("allbookmarks");
+        if (bookmarksLocal == null) {localStorage.setItem("allbookmarks", "[ ]"); bookmarksLocal = localStorage.getItem("allbookmarks");};
+        var bookmarkthing = JSON.parse(bookmarksLocal);
+        if (ife.src.indexOf('/hostedPages/') > -1 || ife.src.indexOf('newtab.html') > -1) {
+          // Hosted page
+          const urlt = ife.contentWindow.location.href
+          const icont = `https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F4%2FSettings-PNG-Image-File.png&f=1&nofb=1`;
+          bookmarkthing.push([ife.contentDocument.title, ife.contentWindow.location.href, icont])
+          localStorage.setItem('allbookmarks', JSON.stringify(bookmarkthing));
+          updateBook(false, [ife.contentDocument.title, urlt, icont]);
+        } else {
+          const urlit = __uv$config.decodeUrl(ife.src.split("/service/")[1]);
+          const icont = `https://www.google.com/s2/favicons?domain=${urlit}`; bookmarkthing.push([ife.contentDocument.title, urlit, icont])
+          localStorage.setItem('allbookmarks', JSON.stringify(bookmarkthing));
+          updateBook(false, [ife.contentDocument.title, urlit, icont]);
+        }
+        //__uv$config.decodeUrl("https://google.com");
+      }
+      ta.addEventListener('click', eqe);
+      window.eqe = eqe;
+    </script>
+    <div style="height: 5px; width: 5px;"></div>
+    <div id="userprofile" style='align-self: self-start;'>
+      <img src='ayit.svg' width="40" height="40" style='filter: invert(1)'>
+    </div>
+    <div style="height: 5px; width: 5px;"></div>
+    <div id="settingsMenuT" style='align-self: self-start;'>
+      <style>
+      </style>
+      <script>
+        function okaylol() {
+          if (document.getElementById('settingsMenu').style.display == 'none') {
+            var contextMenu2 = document.getElementById('settingsMenu').style.display = 'block'
+
+          } else {
+            document.getElementById('settingsMenu').style.display = 'none'
+          }
+        }
+      </script>
+      <svg viewBox="0 0 100 80" width="40" height="40" onclick='okaylol()' class='okri' style='filter: invert(1)'>
+        <rect width="100" height="20"></rect>
+        <rect y="30" width="100" height="20"></rect>
+        <rect y="60" width="100" height="20"></rect>
+      </svg>
+      <div id="settingsMenu" class="context-menu" style='display: none;    background-color: #181515;
+               color: white; z-index: 50;
+               position: absolute;right:0;'>
+        <ul>
+          <li
+            onclick='const iframe = document.querySelector(`.browser-tab-content-iframe[active]`); iframe.src="./hostedPages/history.html"; document.getElementById("proi").innerText = "genow://history"'>
+            History
+          </li>
+          <li onclick='const iframe = document.querySelector(`.browser-tab-content-iframe[active]`); iframe.src="./hostedPages/extensions.html";  document.getElementById("proi").innerText = "genow://extensions";
+                     '>Extensions</li>
+          <li>Bookmarks</li>
+          <li class="separator"></li>
+          <li onclick='function ok(){var printwin = window.open(document.querySelector(`.browser-tab-content-iframe[active]`).src);
+                     printwin.document.write(document.querySelector(`.browser-tab-content-iframe[active]`).contentWindow.document.body.innerHTML);
+                     printwin.print()}; 
+                     ok();    '>Print (CTRL-P)</li>
+          <li class="separator"></li>
+          <li onclick='function o(){javascript:(function () { var script = document.createElement("script"); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
+                     }; o();'>Developer Tools (CTRL-SHIFT-I)</li>
+          <li class="separator"></li>
+          <li
+            onclick='const iframe = document.querySelector(`.browser-tab-content-iframe[active]`); iframe.src="./hostedPages/settings.html"; document.getElementById("proi").innerText = "genow://settings"'>
+            Settings
+          </li>
+          <li
+            onclick='const iframe = document.querySelector(`.browser-tab-content-iframe[active]`); iframe.src="./hostedPages/help.html"; document.getElementById("proi").innerText = "genow://help"'>
+            Help
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    function openBookmark(url, isHosted) {
+      if (isHosted == false) {
+        function isUrl(val = '') {
+          if (/^http(s?):\/\//.test(val) || val.includes('.') && val.substr(0, 1) !== ' ') return true;
+          return false;
+        };
+        window.navigator.serviceWorker.register('./sw.js', {
+          scope: __uv$config.prefix
+        }).then(() => {
+          if (url.indexOf('tiktok') > -1) {
+            url = ''
+          }
+          if (!isUrl(url)) url = 'https://www.duckduckgo.com/?q=' + url;
+          else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+          const ife = document.querySelector('iframe[active]');
+          ife.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+
+        })
+        /*
+    window.navigator.serviceWorker.register('./sw.js', {
+      scope: __uv$config.prefix
+    }).then(() => {
+      let url = input.value.trim();
+      if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+      else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+    
+    
+      window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+    });
+    */
+      } else { // Normal
+        const ife = document.querySelector('iframe[active]')
+        ife.src = url
+      }
+    }
+  </script>
+  <div class='bookmarks' style='
+         width: 100%; border-bottom:1px groove #494f54;
+         '>
+    <div class='eq' style='display: flex; margin-bottom: 5px; margin-top: 3px; overflow: auto;'>
+      <div class='examplebookmark' id='fix' onclick="openBookmark('https://duckduckgo.com',false)">
+        <div class='theicon'>
+          <img src='https://duckduckgo.com/favicon.ico' class='realicon'>
+        </div>
+        <div style="height: 1px; width: 5px;"></div>
+        <div class='bookmarktitle' style='    
+                  font-size: 1rem;
+                  color: white;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  overflow: hidden;'>
+          DuckDuckGo
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="browser-tab-content">
+  </div>
+  <script src='index.js'></script>
+  <script src="uv/uv.bundle.js"></script>
+  <script src="uv/uv.config.js"></script>
+  <script type="text/javascript"></script>
+  <script>
+    function updateBook(firstime, stufftoadd = []) {
+      var localstuf = localStorage.getItem("allbookmarks");
+      if (localstuf == null) {localStorage.setItem("allbookmarks", "[ ]"); localstuf = localStorage.getItem("allbookmarks");};
+      var q = JSON.parse(localstuf);
+      if (firstime) {
+
+        q.forEach((r) => {
+          var [tit, ur, ico] = r;
+          var te = document.getElementById('fix');
+          var therealte = te.cloneNode(true);
+          therealte.id = null
+          var bar = document.querySelector('.eq');
+          var darealimg = therealte.children[0].children[0]
+          darealimg.src = ico;
+          var wee = therealte.children[2]
+          wee.innerText = tit;
+          var darealtitle =
+            bar.appendChild(therealte);
+          var isonthis = false;
+          if (ur.indexOf('/hostedPages/') > -1 || ur.indexOf('/newtab.html') > -1) {
+
+            therealte.onclick = null;
+            function qer() {
+
+              openBookmark(ur, true)
+
+            }
+            therealte.addEventListener('click', qer)
+          } else {
+
+            therealte.onclick = null
+            function qeo() {
+
+              openBookmark(ur, false)
+
+            }
+            therealte.addEventListener('click', qeo)
+          }
+
+        })
+      } else {
+
+        let [titl, uri, icz] = stufftoadd;
+        var te = document.getElementById('fix');
+        var therealte = te.cloneNode(true);
+        therealte.id = null
+        var bar = document.querySelector('.eq');
+        var darealimg = therealte.children[0].children[0]
+        darealimg.src = icz;
+        var wee = therealte.children[2]
+        wee.innerText = titl;
+        var darealtitle =
+          bar.appendChild(therealte);
+        var isonthis = false;
+        if (uri.indexOf('/hostedPages/') > -1 || uri.indexOf('/newtab.html') > -1) {
+
+          therealte.onclick = null;
+          function qer() {
+
+            openBookmark(uri, true)
+
+          }
+          therealte.addEventListener('click', qer)
+        } else {
+
+          therealte.onclick = null
+          function qeo() {
+
+            openBookmark(uri, false)
+
+          }
+          therealte.addEventListener('click', qeo)
+        }
+      }
+    }
+    updateBook(true);
+  </script>
+  <script></script>
+  <script>
+    function waitForElm(selector) {
+      return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+          return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+          if (document.querySelector(selector)) {
+            resolve(document.querySelector(selector));
+            observer.disconnect();
+          }
+        });
+
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      });
+    }
+    document.addEventListener('keydown', logKey)
+    waitForElm('.browser-tab-content-iframe[active]').then((elm) => {
+      function eqrre() {
+
+        document.querySelector('.browser-tab-content-iframe[active]').contentDocument.addEventListener('keydown', logKey)
+      }
+      setTimeout(eqrre, 700);
+    })
+    function logKey(event) {
+      //console.warn(event)
+      // What was I thinking 
+      if ((event.ctrlKey && event.keyCode == 68)) {
+        event.preventDefault();
+
+        eqe();
+
+      }
+    };
+  </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+    integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+    data-cf-beacon='{"rayId":"75cd7ded0d6282da","version":"2022.10.3","r":1,"token":"f329a90bbde64782a41996c0a2289b14","si":100}'
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #000000;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+* { box-sizing: border-box; }
+
+.calc {
+  display: grid;
+  width: 200px;
+  height: 250px;
+  background: #fff2;
+  border: 1px solid #fff2;
+  border-radius: 8px;
+  padding: 16px;
+  gap: 8px;
+  grid-template-areas: 
+    "result result result result"
+    "seven eight nine clear"
+    "four five six plus"
+    "one two three minus"
+    "zero multiply divide equals";
+}
+
+.calc span {
+  padding: 4px;
+  background: #fff2;
+  border: 1px solid #fff2;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result {
+  grid-area: result;
+  font-size: large;
+  font-weight: 550;
+  justify-content: flex-end !important;
+  padding: 4px 16px !important;
+  background-color: #fff3 !important;
+  text-align: left;
+  width: 100%;
+  appearance: none;
+  border: 1px solid #fff2;
+  border-radius: 8px;
+}
+.result:hover {
+  border-style: solid;
+  border-color: none;
+}
+.nine {
+  grid-area: nine;
+}
+.eight {
+  grid-area: eight;
+}
+.seven {
+  grid-area: seven;
+}
+.six {
+  grid-area: six;
+}
+.five {
+  grid-area: five;
+}
+.four {
+  grid-area: four;
+}
+.three {
+  grid-area: three;
+}
+.two {
+  grid-area: two;
+}
+.one {
+  grid-area: one;
+}
+.zero {
+  grid-area: zero;
+}
+
+.divide{
+  grid-area: divide;
+}
+.multiply {
+  grid-area: multiply;
+}
+.minus {
+  grid-area: minus;
+}
+.plus {
+  grid-area: plus;
+}
+.equals {
+  grid-area: equals;
+}
+.clear {
+  grid-area: clear;
+}
+
+.luna-dom-highlighter {
+  display: none;
+}
+
+.operator {
+  color: #fff;
+}
+
+.one:hover,
+.two:hover, 
+.three:hover, 
+.four:hover, 
+.five:hover, 
+.six:hover, 
+.seven:hover, 
+.eight:hover,
+.nine:hover, 
+.zero:hover,
+.operator:hover,
+.clear:hover {
+  background-color: grey;
+  cursor: pointer;
+} 

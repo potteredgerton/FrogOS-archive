@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <!-- Title -->
+  <title>Calculator</title>
+  <!-- External CSS -->
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+  <div class="calc">
+    <!-- Numbers -->
+    <span class="number nine" onclick="nine()">9</span>
+    <span class="number eight" onclick="eight()">8</span>
+    <span class="number seven" onclick="seven()">7</span>
+    <span class="number six" onclick="six()">6</span>
+    <span class="number five" onclick="five()">5</span>
+    <span class="number four" onclick="four()">4</span>
+    <span class="number three" onclick="three()">3</span>
+    <span class="number two" onclick="two()">2</span>
+    <span class="number one" onclick="one()">1</span>
+    <span class="number zero" onclick="zero()">0</span>
+    <span class="clear" onclick="clear()"">C</span>
+    <!-- Operators -->
+    <span class="operator plus" onclick="plusfunc()">+</span>
+    <span class="operator multiply" onclick="multiplyfunc()">*</span>
+    <span class="operator divide" onclick="dividefunc()">/</span>
+    <span class="operator minus" onclick="minusfunc()">-</span>
+    <span class="operator equals" onclick="equalfunc()" type="submit">=</span>
+    <!-- Result -->
+    <input type="text" class="result" value="">
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
