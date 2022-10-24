@@ -22,10 +22,10 @@ Creating Apps
 Format: 
 create_app("App-display-name", "App-icon-url", "App-id NO CAPS OR SYMBOLS", "App URL. If it is a local file on your computer you will need to upload it somewhere like file.io")
 */
-create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser")
-create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator")
-create_app("Camera", "assets/images/apps/camera.png", "camera", "/camera")
-create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings")
+create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser/index.html")
+create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator/index.html")
+create_app("Camera", "assets/images/apps/camera.png", "camera", "/camera/index.html")
+create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings/index.html")
 function loop() {
   const date = new Date();
   const sec = date.getSeconds();
