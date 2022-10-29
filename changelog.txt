@@ -1,3 +1,19 @@
+V0.6
+
+UPDATES:
+
+- Created a custom context menu. Still a WIP
+- Created a camera app and removed the text editor
+
+TO-DO:
+
+- Finish the context menu
+- Make the settings app
+- Make the browser work
+- Make the start menu functional
+
+-----------------------------------------------------
+
 V0.5
 
 UPDATES:
@@ -10,7 +26,7 @@ UPDATES:
 
 TO-DO:
 
-- Make the settings page work
+- Make the settings app
 - Make the browser work
 - Make the start menu functional
 
@@ -24,7 +40,7 @@ UPDATES:
 TO-DO: 
 
 - Make start menu functional
-- Finish iFrame Browser
+- Make the browser work
 
 -----------------------------------------------------
 
@@ -56,6 +72,8 @@ TO-DO:
 - Make start menu functional
 - Make the apps
 
+-----------------------------------------------------
+
 v0.1
 
 UPDATES:
@@ -65,7 +83,7 @@ UPDATES:
 
 TODO:
 
-- Make windows work
+- Make window content work
 - Add the date on the taskbar
 
 -----------------------------------------------------
