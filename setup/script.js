@@ -1,0 +1,17 @@
+$(document).ready(function(){
+    $("#button1").click(function(){
+        $("#div1").fadeIn();
+        $("#div2").fadeOut();
+        $("#div3").fadeOut();
+    });
+    $("#button2").click(function(){
+        $("#div2").fadeIn();
+        $("#div1").fadeOut();
+        $("#div3").fadeOut();
+    });
+    $("#button3").click(function(){
+        $("#div3").fadeIn();
+        $("#div1").fadeOut();
+        $("#div2").fadeOut();
+    });
+});
