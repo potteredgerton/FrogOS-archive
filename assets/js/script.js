@@ -14,12 +14,24 @@ const con = new Audio("assets/music/alert.wav")
 const okay = new Audio("assets/music/positive.wav")
 const no = new Audio("assets/music/negative.wav")
 close(os_window)
+<<<<<<< HEAD
 create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser")
 create_app("Tetris", "assets/images/apps/Tetris_logo.webp", "tetris", "/tetris")
 create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator")
 create_app("Camera", "assets/images/apps/camera.png", "camera", "/camera")
 create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings")
 
+=======
+/*
+Creating Apps 
+Format: 
+create_app("App-display-name", "App-icon-url", "App-id NO CAPS OR SYMBOLS", "App URL. If it is a local file on your computer you will need to upload it somewhere like file.io")
+*/
+create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser/index.html")
+create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator/index.html")
+create_app("Camera", "assets/images/apps/camera.png", "camera", "/camera/index.html")
+create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings/index.html")
+>>>>>>> origin/main
 function loop() {
     var date = new Date()
     var sec = date.getSeconds()
@@ -306,6 +318,7 @@ function openStartMenu() {
       closeStartMenu()
     }
   }
+<<<<<<< HEAD
 
 //Might use this later, idk yet.
 /*function checkWallpaper() { 
@@ -338,3 +351,6 @@ checkWallpaper()
 
 //Code landmarks
 //10/24/2022 300 Lines of code
+=======
+}
+>>>>>>> origin/main
