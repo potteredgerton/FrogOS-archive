@@ -1,3 +1,9 @@
+/*
+let data = sessionStorage.getItem("login");
+if (data != null) {
+  window.location.replace = "./login";
+}
+*/
 const apps = document.querySelector("#br-os-apps")
 const menu = document.querySelector("#os-ct-menu")
 const os_window = document.querySelector(".br-os-window")
@@ -9,306 +15,258 @@ const shorter = document.querySelector("#shorter")
 const cross = document.querySelector("#cross")
 const taskbar = document.querySelector("#taskbar")
 const contextmenu = document.querySelector("#context-menu")
+const batterydiv = document.querySelector("#batterydiv")
 const click = new Audio("assets/music/click.wav")
 const con = new Audio("assets/music/alert.wav")
 const okay = new Audio("assets/music/positive.wav")
 const no = new Audio("assets/music/negative.wav")
 close(os_window)
-create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser")
-create_app("Tetris", "assets/images/apps/Tetris_logo.webp", "tetris", "/tetris")
-create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator")
+//create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser2")
+//create_app("Tetris", "assets/images/apps/tetris.png", "tetris", "/tetris")
+create_app("Weather", "assets/images/apps/weather.png", "weather", "/weather")
 create_app("Camera", "assets/images/apps/camera.png", "camera", "/camera")
-create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings")
+create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator")
+create_app("Terminal", "assets/images/apps/terminal.png", "term", "/terminal")
+//create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings")
 
 function loop() {
-    var date = new Date()
-    var sec = date.getSeconds()
+  var date = new Date()
+  var sec = date.getSeconds()
 
-    setTimeout(() => {
-        setInterval(() => {
-            datetime()
-        }, 60 * 500);
-    }, (60 - sec) * 1000);
+  setTimeout(() => {
+    setInterval(() => {
+      datetime()
+    }, 60 * 500);
+  }, (60 - sec) * 1000);
 }
 
 function datetime() {
-    const val = new Date();
-    const min = val.getMinutes();
-    const bmin = min.toString();
-    if (bmin.length == 1) {
-        let hours = val.getHours();
-        let day = val.getDate();
-        let month = val.getMonth() + 1;
-        let year = val.getFullYear();
-        let sess = "AM"
-        if (hours == 0) {
-            hours = 12
-            sess = "AM"
-        } else if (hours > 12) {
-            hours = hours - 12;
-            sess = "PM"
-        }
-        const time = hours + ":0" + min + " " + sess;
-        const date = month + "/" + day + "/" + year;
-        document.getElementById('dateandtime').innerHTML = (time);
-        document.getElementById('dateandtime').title = (date);
-    } else {
-        let hours = val.getHours();
-        let day = val.getDate();
-        let month = val.getMonth() + 1;
-        let year = val.getFullYear();
-        let sess = "AM"
-        if (hours == 0) {
-            hours = 12
-            sess = "AM"
-        } else if (hours > 12) {
-            hours = hours - 12;
-            sess = "PM"
-        }
-        const time = hours + ":" + min + " " + sess;
-        const date = month + "/" + day + "/" + year;
-        document.getElementById('dateandtime').innerHTML = (time);
-        document.getElementById('dateandtime').title = (date);
+  const val = new Date();
+  const min = val.getMinutes();
+  const bmin = min.toString();
+  if (bmin.length == 1) {
+    let hours = val.getHours();
+    let day = val.getDate();
+    let month = val.getMonth() + 1;
+    let year = val.getFullYear();
+    let sess = "AM"
+    if (hours == 0) {
+      hours = 12
+      sess = "AM"
+    } else if (hours > 12) {
+      hours = hours - 12;
+      sess = "PM"
     }
+    const time = hours + ":0" + min + " " + sess;
+    const date = month + "/" + day + "/" + year;
+    document.getElementById('time').innerHTML = (time);
+    document.getElementById('date').innerHTML = (date);
+  } else {
+    let hours = val.getHours();
+    let day = val.getDate();
+    let month = val.getMonth() + 1;
+    let year = val.getFullYear();
+    let sess = "AM"
+    if (hours == 0) {
+      hours = 12
+      sess = "AM"
+    } else if (hours > 12) {
+      hours = hours - 12;
+      sess = "PM"
+    }
+    const time = hours + ":" + min + " " + sess;
+    const date = month + "/" + day + "/" + year;
+    document.getElementById('time').innerHTML = (time);
+    document.getElementById('date').innerHTML = (date);
+  }
 }
 
 function create_app(name, image, id, src) {
-    let app = document.createElement("div")
-    app.classList.add("app")
-    app.id = id
-    app.onclick = () => window_open(id, src, image)
-    let img = document.createElement("img")
-    img.src = image
-    img.setAttribute("alt", name)
-    let p = document.createElement("p")
-    let tbarapp = document.createElement("img")
-    tbarapp.src = image
-    tbarapp.id = id
-    tbarapp.onclick = () => window_open(id, src);
-    p.innerText = name
-    app.appendChild(img)
-    app.appendChild(p)
-    apps.appendChild(app)
-    tbarapps.appendChild(tbarapp)
+  let img = document.createElement("img")
+  img.src = image
+  img.setAttribute("alt", name)
+  let p = document.createElement("p")
+  let tbarapp = document.createElement("img")
+  tbarapp.src = image
+  tbarapp.id = id
+  tbarapp.onclick = () => window_open(id, src, image, name);
+  p.innerText = name
+  tbarapps.appendChild(tbarapp)
 }
 
-function window_open(id, src) {
-    click.play()
-    brand_window.innerHTML = ""
-    app_main.innerHTML = "<iframe src=" + src + "></iframe>"
-    init_window()
-    let main = document.querySelector("#" + id)
-    let img = document.createElement("img")
-    img.src = main.childNodes[0].src
-    img.setAttribute("alt", main.childNodes[0].getAttribute("alt"))
-    img.setAttribute("alt", main.childNodes[0].getAttribute("alt"))
-    let p = document.createElement("p")
-    p.innerText = main.childNodes[1].innerText
-    brand_window.appendChild(img)
-    brand_window.appendChild(p)
-    open(os_window)
-    dragElement(document.getElementById(id));
+function window_open(id, src, image, text) {
+  click.play()
+  brand_window.innerHTML = ""
+  app_main.innerHTML = "<iframe src=" + src + "></iframe>"
+  init_window()
+  let img = document.createElement("img")
+  img.src = image
+  let p = document.createElement("p")
+  p.innerText = text
+  brand_window.appendChild(img)
+  brand_window.appendChild(p)
+  open(os_window)
+  dragElement(document.getElementById(id));
 }
 
 function open(tag) {
-    tag.style.display = "inline-block"
+  tag.style.display = "inline-block"
 }
 
 function close(tag) {
-    tag.style.display = "none"
+  tag.style.display = "none"
 }
 
 function init_window() {
-    close(shorter)
-    minimize.onclick = e => {
-        click.play()
-        minimize_window()
-    }
-    maximise.onclick = e => {
-        click.play()
-        maximise_window()
-    }
-    shorter.onclick = e => {
-        click.play()
-        shorter_window()
-    }
-    cross.onclick = e => {
-        click.play()
-        close(os_window)
-    }
+  close(shorter)
+  minimize.onclick = e => {
+    click.play()
+    minimize_window()
+  }
+  maximise.onclick = e => {
+    click.play()
+    maximise_window()
+  }
+  shorter.onclick = e => {
+    click.play()
+    shorter_window()
+  }
+  cross.onclick = e => {
+    click.play()
+    close(os_window)
+  }
 }
 
 function minimize_window() {
-    os_window.style.display = "none"
+  os_window.style.display = "none"
 }
 
 function maximise_window() {
-    open(shorter)
-    close(maximise)
-    window.restoreX = os_window.style.left
-    window.restoreY = os_window.style.top
-    os_window.style.top = 0
-    os_window.style.left = 0
-    os_window.style.width = "100%"
-    os_window.style.height = "100vh"
+  open(shorter)
+  close(maximise)
+  console.log(window)
+  os_window.style.top = 0
+  os_window.style.left = 0
+  os_window.style.width = "100%"
+  os_window.style.height = "100vh"
 }
 
 function shorter_window() {
-    open(maximise)
-    close(shorter)
-    os_window.style.top = window.restoreY
-    os_window.style.left = window.restoreX
-    os_window.style.width = "50%"
-    os_window.style.height = "50vh"
+  open(maximise)
+  close(shorter)
+  os_window.style.top = window.restoreY
+  os_window.style.left = window.restoreX
+  os_window.style.width = "50%"
+  os_window.style.height = "50vh"
 }
 
 function open_menu(e, id) {
-    e.preventDefault()
-    menu.classList.add("active")
-    menu.querySelectorAll("ul li")[0].childNodes[0].onclick = () => {
-        window_open(id)
-    }
-    menu.querySelectorAll("ul li")[1].childNodes[0].onclick = () => {
-        admin_access(id)
-    }
-    menu.querySelectorAll("ul li")[2].childNodes[0].onclick = () => {
-        remove_app(id)
-    }
-    menu.querySelectorAll("ul li")[3].childnodes[0].onclick = () => {
-        app_properties()
-    }
-    menu.style.top = e.pageY + 5 + "px"
-    menu.style.left = e.pageX + 5 + "px"
-    return false
+  e.preventDefault()
+  menu.classList.add("active")
+  menu.querySelectorAll("ul li")[0].childNodes[0].onclick = () => {
+    window_open(id)
+  }
+  menu.querySelectorAll("ul li")[1].childNodes[0].onclick = () => {
+    admin_access(id)
+  }
+  menu.querySelectorAll("ul li")[2].childNodes[0].onclick = () => {
+    remove_app(id)
+  }
+  menu.querySelectorAll("ul li")[3].childnodes[0].onclick = () => {
+    app_properties()
+  }
+  menu.style.top = e.pageY + 5 + "px"
+  menu.style.left = e.pageX + 5 + "px"
+  return false
 }
+
 window.onclick = e => {
-    if (menu.classList.contains("active")) {
-        menu.classList.remove("active")
-    }
+  if (menu.classList.contains("active")) {
+    menu.classList.remove("active")
+  }
 }
-navigator.getBattery().then((battery) => {
-    function updateAllBatteryInfo() {
-        updateChargeInfo();
-        updateLevelInfo();
-        updateChargingInfo();
-        updateDischargingInfo();
-    }
-    updateAllBatteryInfo();
-
-    battery.addEventListener("chargingchange", () => {
-        updateChargeInfo();
-    });
-
-    function updateChargeInfo() {
-        console.log(`Battery charging? ${battery.charging ? "Yes" : "No"}`);
-    }
-
-    battery.addEventListener("levelchange", () => {
-        updateLevelInfo();
-    });
-
-    function updateLevelInfo() {
-        console.log(`Battery level: ${battery.level * 100}%`);
-    }
-
-    battery.addEventListener("chargingtimechange", () => {
-        updateChargingInfo();
-    });
-
-    function updateChargingInfo() {
-        console.log(`Battery charging time: ${battery.chargingTime} seconds`);
-    }
-
-    battery.addEventListener("dischargingtimechange", () => {
-        updateDischargingInfo();
-    });
-
-    function updateDischargingInfo() {
-        console.log(`Battery discharging time: ${battery.dischargingTime} seconds`);
-    }
-});
 document.onclick = hideMenu;
 document.oncontextmenu = rightClick;
 
 function hideMenu() {
-    document.getElementById("context-menu").style.display = "none";
+  document.getElementById("context-menu").style.display = "none";
 }
 
 function rightClick(e) {
-    e.preventDefault();
-    if (document.getElementById("context-menu").style.display == "block")
-        hideMenu();
-    else {
-        var men = document.getElementById("context-menu")
-        men.style.display = 'block';
-        men.style.left = e.pageX + "px";
-        men.style.top = e.pageY + "px";
-    }
+  e.preventDefault();
+  if (document.getElementById("context-menu").style.display == "block")
+    hideMenu();
+  else {
+    var men = document.getElementById("context-menu")
+    men.style.display = 'block';
+    men.style.left = e.pageX + "px";
+    men.style.top = e.pageY + "px";
+  }
 }
 
 function power() {
-    window.location.reload();
+  window.location.reload();
 }
 
 function refresh() {
-    window.location.reload()
+  window.location.reload()
 }
 dragElement(document.querySelector("#brwin"));
 
 function dragElement(elmnt) {
-    var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-    if (document.getElementById(elmnt.id + "header")) {
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-    } else {
-        elmnt.onmousedown = dragMouseDown;
-    }
+  var pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
 
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-    }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
 
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
 
-    function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
 }
 
 function openStartMenu() {
-    document.getElementById("startmenu").style.display = 'block'
+  document.getElementById("startmenu").style.display = 'block'
+}
+function closeStartMenu() {
+  document.getElementById("startmenu").style.display = 'none'
+}
+document.body.onclick = e => {
+  if (e.target == document.getElementById("startmenubtn") || e.target == document.getElementById("startmenu")) {
+    openStartMenu()
   }
-  function closeStartMenu() {
-    document.getElementById("startmenu").style.display = 'none'
+  else {
+    closeStartMenu()
   }
-  document.body.onclick = e => {
-    if (e.target == document.getElementById("startmenubtn") || e.target == document.getElementById("startmenu")) {
-      openStartMenu()
-    }
-    else {
-      closeStartMenu()
-    }
-  }
+}
 
 //Might use this later, idk yet.
-/*function checkWallpaper() { 
+/*function checkWallpaper() {
     var wallpaper = getCookie("wallpaper");
     if (wallpaper == null) {
         document.body.style.backgroundImage = wallpaper;

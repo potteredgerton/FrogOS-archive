@@ -1,195 +1,214 @@
 body {
-    overflow: hidden;
-    font-family: sans-serif;
-    background-size: 100%;
-    background-color: black;
-}
-
-#dragtop {
-  height: 1px;
-  width: 100%;
-}
-
-#dragleft {
-  height: 100%;
-  width: 1px;
-}
-
-#dragright {
-  height: 100%;
-  width: 1px;
-}
-
-#dragbottom {
-  height: 1px;
-  width: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  background-size: 100%;
+  background-color: steelblue;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 :root::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 :root {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 #context-menu {
-    position: absolute;
-    display: none;
-    background-color: white;
-    border-style: solid;
-    border-color: darkgrey;
-    border-width: 2px;
+  position: absolute;
+  display: none;
+  background-color: white;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 2px;
 }
 
 #context-menu li {
-    padding-left: 10px;
-    padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #context-menu a {
-    text-decoration: none;
-    color: black;
-    cursor: default;
+  text-decoration: none;
+  color: black;
+  cursor: default;
 }
 
 #context-menu i {
-    position: absolute;
-    right: 0px;
+  position: absolute;
+  right: 0px;
 }
 
 #context-menu div:hover {
-    background: lightgray;
+  background: lightgray;
 }
 
 #container {
-    animation: fadeIn 1s;
-    width: 100%;
-    height: 100vh;
+  animation: fadeIn 1s;
+  width: 100%;
+  height: 100vh;
 }
 
 iframe {
-    width: 105%;
-    height: 105%;
-    position: absolute;
-    display: block;
-    top: 20;
-    left: 0;
+  width: 105%;
+  height: 105%;
+  position: absolute;
+  display: block;
+  top: 20;
+  left: 0;
 }
 
-#dateandtime {
-    top: 30%;
-    bottom: 30%;
-    height: 100%;
+#right {
+  display: flex;
+  justify-content: right;
 }
 
 #dateandtimediv {
-    position: absolute;
-    cursor: default;
-    right: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  top: 3%;
 }
 
-#dateandtime:hover #dateandtimediv {
-    background-color: darkgrey;
+#date, #time {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: white;
+  width: 100%;
 }
 
 #tbarapps {
-    position: absolute;
-    height: 45px;
-    left: 45px;
+  height: 45px;
+  left: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
 }
 
 #tbarapps img {
-    width: 45px;
-    height: 44px;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin: 2.5px;
+  border-radius: 50%;
 }
 
-#battery {
-    display: inline-flex;
-    align-items: right;
+#batterydiv {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  background-color: inherit;
+  flex-direction: row;
+}
+
+/* 
+Might add this back later, not sure yet.
+brappsdiv {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50%;
+  border-radius: 5%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 #br-os-apps {
-    width: 100%;
-    padding: 10px;
+  flex-direction: row;
+}
+
+.apps {
+  flex-direction: row;
 }
 
 #br-os-apps .app {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 10px;
-    cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: inline;
+  cursor: pointer;
+  padding: 5px;
+  flex-direction: row;
 }
 
 #br-os-apps .app img {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  flex-direction: row;
 }
 
 #br-os-apps .app p {
-    color: white;
-    font-size: 14px;
-    text-align: center;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+*/
+#taskbar {
+  position: absolute;
+  display: flexbox;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background-color: darkgrey;
 }
 
-#taskbar {
-    position: absolute;
-    display: flexbox;
-    bottom: 0;
-    width: 100%;
-    height: 45px;
-    background: rgb(128, 128, 128)
+#date {
+  display: none;
 }
 
 #startmenubtn {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    border-top-style: none;
-    border-right-style: solid;
-    border-bottom-style: none;
-    border-left-style: none;
-    border-width: 2px;
-    cursor: pointer;
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-top-style: none;
+  border-right-style: solid;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-width: 2px;
+  cursor: pointer;
+  background: inherit;
 }
 
 #startmenu {
-    display: none;
-    position: absolute;
-    width: 300px;
-    height: 400px;
-    bottom: 45px;
-    left: 0px;
-    z-index: 20;
-    background-color: lightgrey;
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  bottom: 45px;
+  left: 0px;
+  z-index: 20;
+  background-color: lightgrey;
 }
 
 .fa-power-off {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .br-os-window {
@@ -286,34 +305,65 @@ iframe {
     background: #fff;
     overflow: auto;
 }
+/*
+BELOW STILL NEEDS TO BE IMPLEMENTED
+.app-container-header div {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.2em 0.2em 0.2em 0.5em;
+    border-radius: 0.5em;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    transition-duration: 0.2s;
+    font-weight: 300;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.app-container-header div:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition-duration: 0.5s;
+    border-top: none;
+}
+
+.app-container-header div svg {
+    padding: 0 0 0 0.5em;
+    fill: white !important;
+}
+*/
+.br-os-window .app {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: auto;
+}
 
 #os-ct-menu {
-    display: none;
-    position: absolute;
-    z-index: 10;
-    background: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 3px 5px 10px rgba(255, 255, 255, 0, 3), 6px 10px 10px rgba(255, 255, 255, 0, 3);
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 5px 10px rgba(255, 255, 255, 0, 3), 6px 10px 10px rgba(255, 255, 255, 0, 3);
 }
 
 #os-ct-menu ul li {
-    color: rgb(46, 26, 3);
+  color: rgb(46, 26, 3);
 }
 
 #os-ct-menu ul li:hover {
-    background: antiquewhite;
+  background: antiquewhite;
 }
 
 #os-ct-menu.active {
-    display: block;
+  display: block;
 }
 
 #taskbarbuttondiv {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    background-color: black;
-    border-style: none;
-    cursor: pointer;
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background-color: black;
+  border-style: none;
+  cursor: pointer;
 }

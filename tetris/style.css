@@ -1,6 +1,7 @@
 html, body {
-  height: 100%;
-  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: none;
 }
 
 body {
@@ -12,8 +13,4 @@ body {
 
 canvas {
   border: 1px solid white;
-}
-
-p {
-  color: white;
 }

@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+  <link rel="manifest" href="/manifest.json">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,25 +15,37 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://kit.fontawesome.com/d7d87efefa.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="assets/plugins/vex/css/vex-theme-os.css">
 </head>
+
 <body onload="datetime(), loop()">
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('/sw.js')
+    }
+  </script>
   <div id="login" style="display:none"></div>
   <div id="startmenu">
     <i class="fa-solid fa-power-off fa-3x" onclick="power()"></i>
   </div>
   <div id="container">
+    <div id="dateandtimediv">
+      <h1 id="time">Loading...</h1>
+      <h2 id="date">Loading...</h2>
+    </div>
     <div id="br-os-apps">
     </div>
     <div id="taskbar">
       <div>
-        <img src="/assets/images/FrogOS.png" id="startmenubtn"></img>
+        <img src="assets/images/FrogOS.png" id="startmenubtn"></img>
       </div>
       <div id="search">
         <div id="tbarapps"></div>
-        <div id="dateandtimediv">
-          <p id="dateandtime">Loading...</p>
+        <div id="right">
+          <div id="batterydiv"></div>
         </div>
       </div>
     </div>
@@ -62,59 +75,38 @@
           </button>
         </div>
       </div>
-
-      <div class="app" id="app-main">
-
+      <div id="app-main">
       </div>
-    </div>
+      <div id="app-hide"></div>
 
-    <div id="app-hide"></div>
-
-    <nav id="os-ct-menu">
-      <ul>
-        <li><a>Open</a></li>
-        <li><a>Open as administrator</a></li>
-        <li><a>Remove</a></li>
-      </ul>
-    </nav>
-    <div id="context-menu">
-      <ul>
-        <div>
-          <li><a>Wallpaper</a><i class="fa fa-right-arrow"></i></li>
-        </div>
-        <div>
-          <li><a>Sort By</a></li>
-        </div>
-        <div>
-          <li onclick="refresh()"><a>Refresh</a></li>
-        </div>
-        <div>
-          <li><a>Display Settings</a></li>
-        </div>
-      </ul>
-    </div>
-    <script src="assets/plugins/vex/js/vex.combined.js"></script>
-    <script>
-      vex.defaultOptions.className = "vex-theme-os"
-    </script>
-    <script src="assets/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/vendor/three.r134.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.waves.min.js"></script>
-    <script>
-    VANTA.WAVES({
-      el: "body",
-      mouseControls: false,
-      touchControls: false,
-      gyroControls: false,
-      minHeight: 1000,
-      minWidth: 1000,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x1d0088,
-      shininess: 20.00,
-      waveSpeed: 0.75
-    })
-    </script>
+      <nav id="os-ct-menu">
+        <ul>
+          <li><a>Open</a></li>
+          <li><a>Open as administrator</a></li>
+          <li><a>Remove</a></li>
+        </ul>
+      </nav>
+      <div id="context-menu">
+        <ul>
+          <div>
+            <li><a>Wallpaper</a><i class="fa fa-right-arrow"></i></li>
+          </div>
+          <div>
+            <li><a>Sort By</a></li>
+          </div>
+          <div>
+            <li onclick="refresh()"><a>Refresh</a></li>
+          </div>
+          <div>
+            <li><a>Display Settings</a></li>
+          </div>
+        </ul>
+      </div>
+      <script src="assets/plugins/vex/js/vex.combined.js"></script>
+      <script>
+        vex.defaultOptions.className = "vex-theme-os"
+      </script>
+      <script src="assets/js/script.js"></script>
 
 </body>
 

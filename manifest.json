@@ -1,16 +1,41 @@
 {
-    "short_name": "AaronOS",
-    "name": "AaronOS",
-    "icons": [
-        {
-            "src": "icon-512x512.png",
-            "type": "image/png",
-            "sizes": "512x512"
-        }
-    ],
-    "display": "standalone",
-    "background_color": "#384450",
-    "theme_color": "#384450",
-    "orientation": "any",
-    "start_url": "aosBeta.php"
+  "background_color": "#000000",
+  "description": "Frog OS is an in-browser operating system.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Frog OS",
+  "orientation": "landscape",
+  "scope": "/",
+  "short_name": "Frog OS",
+  "start_url": "/app/index.html",
+  "theme_color": "#000000",
+  "categories": [
+    "entertainment",
+    "games",
+    "music",
+    "utilities",
+    "weather"
+  ],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "shortcuts": [],
+  "lang": "en",
+  "display_override": [
+    "standalone"
+  ],
+  "iarc_rating_id": "3+",
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "aaronos.dev",
+      "id": "Aaron OS"
+    }
+  ]
 }
