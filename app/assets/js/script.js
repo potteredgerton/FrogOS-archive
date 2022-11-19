@@ -1,9 +1,3 @@
-/*
-let data = sessionStorage.getItem("login");
-if (data != null) {
-  window.location.replace = "./login";
-}
-*/
 const apps = document.querySelector("#br-os-apps")
 const menu = document.querySelector("#os-ct-menu")
 const os_window = document.querySelector(".br-os-window")
@@ -21,6 +15,12 @@ const con = new Audio("assets/music/alert.wav")
 const okay = new Audio("assets/music/positive.wav")
 const no = new Audio("assets/music/negative.wav")
 close(os_window)
+
+function drepo(repo) {
+  if (!repo === null) {
+    return;
+  }
+}
 //create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser2")
 //create_app("Tetris", "assets/images/apps/tetris.png", "tetris", "/tetris")
 create_app("Weather", "assets/images/apps/weather.png", "weather", "/weather")
@@ -28,6 +28,7 @@ create_app("Camera", "assets/images/apps/camera.png", "camera", "/camera")
 create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator")
 create_app("Terminal", "assets/images/apps/terminal.png", "term", "/terminal")
 //create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings")
+localStorage.repo.forEach(elem => drepo(elem));
 
 function loop() {
   var date = new Date()
@@ -180,30 +181,6 @@ function open_menu(e, id) {
   return false
 }
 
-window.onclick = e => {
-  if (menu.classList.contains("active")) {
-    menu.classList.remove("active")
-  }
-}
-document.onclick = hideMenu;
-document.oncontextmenu = rightClick;
-
-function hideMenu() {
-  document.getElementById("context-menu").style.display = "none";
-}
-
-function rightClick(e) {
-  e.preventDefault();
-  if (document.getElementById("context-menu").style.display == "block")
-    hideMenu();
-  else {
-    var men = document.getElementById("context-menu")
-    men.style.display = 'block';
-    men.style.left = e.pageX + "px";
-    men.style.top = e.pageY + "px";
-  }
-}
-
 function power() {
   window.location.reload();
 }
@@ -211,6 +188,7 @@ function power() {
 function refresh() {
   window.location.reload()
 }
+
 dragElement(document.querySelector("#brwin"));
 
 function dragElement(elmnt) {

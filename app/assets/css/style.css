@@ -67,17 +67,20 @@ body {
 }
 
 iframe {
-  width: 105%;
-  height: 105%;
+  width: 100%;
+  height: 100%;
   position: absolute;
   display: block;
   top: 20;
   left: 0;
 }
 
-#right {
-  display: flex;
-  justify-content: right;
+.notifications {
+  position: absolute;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #d0d0d0;
 }
 
 #dateandtimediv {
@@ -86,16 +89,20 @@ iframe {
   right: 0;
   margin: 0 auto;
   text-align: center;
-  top: 3%;
 }
 
-#date, #time {
+#time, #date {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   color: white;
   width: 100%;
+}
+
+#date {
+  display: none;
 }
 
 #tbarapps {
@@ -115,17 +122,9 @@ iframe {
   border-radius: 50%;
 }
 
-#batterydiv {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  background-color: inherit;
-  flex-direction: row;
-}
-
 /* 
 Might add this back later, not sure yet.
-brappsdiv {
+#brappsdiv {
   text-align: center;
   position: absolute;
   top: 50%;
@@ -172,13 +171,10 @@ brappsdiv {
   position: absolute;
   display: flexbox;
   bottom: 0;
+  left: 0;
   width: 100%;
   height: 45px;
   background-color: darkgrey;
-}
-
-#date {
-  display: none;
 }
 
 #startmenubtn {
@@ -192,23 +188,34 @@ brappsdiv {
   border-width: 2px;
   cursor: pointer;
   background: inherit;
+  border-radius: inherit;
 }
 
 #startmenu {
   display: none;
   position: absolute;
-  width: 300px;
-  height: 400px;
+  width: 55%;
+  height: 65%;
   bottom: 45px;
   left: 0px;
   z-index: 20;
   background-color: lightgrey;
 }
 
-.fa-power-off {
+.power-off {
   position: absolute;
   bottom: 0;
   left: 0;
+  height: 55px;
+  width: 55px;
+}
+
+.settings {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 55px;
+  width: 55px;
 }
 
 .br-os-window {
@@ -230,7 +237,7 @@ brappsdiv {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: rgb(182, 182, 182);
+    background: rgb(255, 255, 255);
     padding: 0 10px;
     cursor: move;
     cursor: -moz-grab;
@@ -259,77 +266,13 @@ brappsdiv {
     margin-left: 10px;
 }
 
-.br-os-window .window-bar .brand .buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    aspect-ratio: 1 / 1;
-}
-
-.br-os-window .window-bar .brand .buttons button {
-    border: none;
-    outline: none;
-    color: #fff;
-    padding: 5px;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    cursor: pointer;
-}
-
-.br-os-window .window-bar .brand .buttons button:first-child {
-    background: rgb(3, 82, 0);
-}
-
-.br-os-window .window-bar .brand .buttons button:nth-child(2) {
-    background: rgb(59, 0, 82);
-}
-
-.br-os-window .window-bar .brand .buttons button:nth-child(3) {
-    background: rgb(121, 45, 1);
-}
-
-.br-os-window .window-bar .brand .buttons button:last-child {
-    background: rgb(255, 43, 43);
-    margin-right: 0;
-}
-
-.br-os-window .window-bar .brand .buttons button:hover {
-    background: rgb(182, 182, 182);
-    color: rgb(255, 43, 43);
-}
-
 .br-os-window .app {
     width: 100%;
     height: 100%;
     background: #fff;
     overflow: auto;
 }
-/*
-BELOW STILL NEEDS TO BE IMPLEMENTED
-.app-container-header div {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.2em 0.2em 0.2em 0.5em;
-    border-radius: 0.5em;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    transition-duration: 0.2s;
-    font-weight: 300;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 
-.app-container-header div:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transition-duration: 0.5s;
-    border-top: none;
-}
-
-.app-container-header div svg {
-    padding: 0 0 0 0.5em;
-    fill: white !important;
-}
-*/
 .br-os-window .app {
   width: 100%;
   height: 100%;
@@ -337,33 +280,15 @@ BELOW STILL NEEDS TO BE IMPLEMENTED
   overflow: auto;
 }
 
-#os-ct-menu {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  background: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 3px 5px 10px rgba(255, 255, 255, 0, 3), 6px 10px 10px rgba(255, 255, 255, 0, 3);
+.modify {
+  background-color: inherit;
+  height: 32px;
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  cursor: default;
+  display: inline;
 }
 
-#os-ct-menu ul li {
-  color: rgb(46, 26, 3);
-}
-
-#os-ct-menu ul li:hover {
-  background: antiquewhite;
-}
-
-#os-ct-menu.active {
-  display: block;
-}
-
-#taskbarbuttondiv {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  background-color: black;
-  border-style: none;
-  cursor: pointer;
-}
+.modify:hover {
+  background-color: rgba(199,202,207,255)
+} */

@@ -82,4 +82,5 @@ function equalfunc() {
   else {
     textfield.value = eval(textfield.value)
   }
+  window.parent.postMessage(noti("hey", "hey2"));
 }

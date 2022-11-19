@@ -16,6 +16,7 @@ textarea.addEventListener("keydown", (event) => {
   if (event.code !== "Enter") {
     return;
   }
+  event.preventDefault();
   let input = textarea.value.substr(textarea.value.lastIndexOf(">") + 1).toLowerCase();
   //Print command
   if (input.substr(0, 5) == "print") {
@@ -24,7 +25,7 @@ textarea.addEventListener("keydown", (event) => {
   //Help command
   if (input.substr(0, 4) == "help") {
     if (input.length == "4") {
-      let output = '\nFor a more in-depth description type "help" followed by a commands name.\nPrint\nPrint any text into the console.\n\nColor\nChanges text and background colors of the terminal'
+      let output = '\n\nFor a more in-depth description type "help" followed by a commands name.\n\nPrint\nPrint any text into the console.\n\nColor\nChanges text and background colors of the terminal'
       print(output)
     }
     //Specific help commands

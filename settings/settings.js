@@ -1,6 +1,11 @@
-function bg() {
-  let bginput = document.getElementById('bginput');
-  let bgurl = bginput.value
-  document.cookie = bgurl
+const themetoggle = document.getElementById("")
+const bginput = document.getElementById('bginput');
+
+function saveBg() {
+  const bgurl = bginput.value
+  window.localStorage.setItem("bgurl", bgurl)
 }
 
+function saveTheme() {
+  //idk yet
+}

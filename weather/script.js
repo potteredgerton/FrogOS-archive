@@ -8,7 +8,7 @@ var wind = document.querySelector('#wind')
 apik = "3045dd712ffe6e702e3245525ac7fa38"
 
 function convertion(val) {
-  return (val - 273).toFixed(2)
+  return val
 }
 
 btn.addEventListener('click', function() {
@@ -23,7 +23,7 @@ btn.addEventListener('click', function() {
       var tempature = data['main']['temp']
       var wndspd = data['wind']['speed']
       city.innerHTML = `Weather of <span>${nameval}<span>`
-      temp.innerHTML = `Temperature: <span>${convertion(tempature)} C</span>`
+      temp.innerHTML = `Temperature: <span>${convertion(tempature)} F</span>`
       description.innerHTML = `Sky Conditions: <span>${descrip}<span>`
       wind.innerHTML = `Wind Speed: <span>${wndspd} km/h<span>`
       return;

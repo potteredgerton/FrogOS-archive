@@ -4,6 +4,7 @@
 
 <head>
   <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="./globals.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="assets/plugins/vex/css/vex-theme-os.css">
 </head>
 
 <body onload="datetime(), loop()">
@@ -28,86 +28,49 @@
     }
   </script>
   <div id="login" style="display:none"></div>
+  <div class="notifications" style="display:none;"></div>
   <div id="startmenu">
-    <i class="fa-solid fa-power-off fa-3x" onclick="power()"></i>
+    <div id="smallsideofstartmenu">
+      <img src="assets/images/icons/power-off.png" class="power-off">
+    </div>
   </div>
   <div id="container">
     <div id="dateandtimediv">
       <h1 id="time">Loading...</h1>
-      <h2 id="date">Loading...</h2>
+      <h1 id="date">Loading...</h1>
     </div>
     <div id="br-os-apps">
     </div>
     <div id="taskbar">
-      <div>
-        <img src="assets/images/FrogOS.png" id="startmenubtn"></img>
-      </div>
-      <div id="search">
-        <div id="tbarapps"></div>
-        <div id="right">
-          <div id="batterydiv"></div>
-        </div>
-      </div>
+      <img src="assets/images/FrogOS.png" id="startmenubtn"></img>
+      <div id="tbarapps"></div>
     </div>
+  </div>
 
-    <div class="br-os-window" id="brwin">
-      <div id="dragtop"></div>
-      <div class="window-bar" id="brwinheader">
+  <div class="br-os-window" id="brwin">
+    <div id="dragtop"></div>
+    <div class="window-bar" id="brwinheader">
 
-        <div class="brand"></div>
+      <div class="brand"></div>
 
-        <div class="buttons">
+      <div class="buttons">
 
-          <button id="minimize">
-            <i class="fa fa-window-minimize"></i>
-          </button>
+        <img src="assets/images/icons/minimize.png" id="minimize" class="modify"></img>
 
-          <button id="maximise">
-            <i class="fa fa-window-maximize"></i>
-          </button>
+          <img src="assets/images/icons/square.png" id="maximise" class="modify"></img>
 
-          <button id="shorter">
-            <i class="fa fa-window-restore"></i>
-          </button>
+          <img src="assets/images/icons/restore.png" id="shorter" class="modify"></img>
+        
+          <img src="assets/images/icons/close.png" id="cross" class="modify"></img>
 
-          <button id="cross">
-            <i class="fa fa-times"></i>
-          </button>
         </div>
       </div>
       <div id="app-main">
       </div>
       <div id="app-hide"></div>
-
-      <nav id="os-ct-menu">
-        <ul>
-          <li><a>Open</a></li>
-          <li><a>Open as administrator</a></li>
-          <li><a>Remove</a></li>
-        </ul>
-      </nav>
-      <div id="context-menu">
-        <ul>
-          <div>
-            <li><a>Wallpaper</a><i class="fa fa-right-arrow"></i></li>
-          </div>
-          <div>
-            <li><a>Sort By</a></li>
-          </div>
-          <div>
-            <li onclick="refresh()"><a>Refresh</a></li>
-          </div>
-          <div>
-            <li><a>Display Settings</a></li>
-          </div>
-        </ul>
-      </div>
-      <script src="assets/plugins/vex/js/vex.combined.js"></script>
-      <script>
-        vex.defaultOptions.className = "vex-theme-os"
-      </script>
-      <script src="assets/js/script.js"></script>
-
+    </div>
+    <script src="assets/js/script.js"></script>
+    <script src="notis.js"></script>
 </body>
 
 </html>
