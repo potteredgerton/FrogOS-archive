@@ -19,25 +19,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="lib/draggability/drag.js"></script>
 </head>
 
-<body onload="datetime(), loop()">
+<body>
   <script>
     if (typeof navigator.serviceWorker !== 'undefined') {
       navigator.serviceWorker.register('/sw.js')
     }
   </script>
-  <div id="login" style="display:none"></div>
   <div class="notifications" style="display:none;"></div>
   <div id="startmenu">
-    <div id="smallsideofstartmenu">
-      <img src="assets/images/icons/power-off.png" class="power-off">
-    </div>
   </div>
   <div id="container">
     <div id="dateandtimediv">
       <h1 id="time">Loading...</h1>
-      <h1 id="date">Loading...</h1>
+      <h3 id="date">Loading...</h3>
     </div>
     <div id="br-os-apps">
     </div>
@@ -47,30 +44,8 @@
     </div>
   </div>
 
-  <div class="br-os-window" id="brwin">
-    <div id="dragtop"></div>
-    <div class="window-bar" id="brwinheader">
-
-      <div class="brand"></div>
-
-      <div class="buttons">
-
-        <img src="assets/images/icons/minimize.png" id="minimize" class="modify"></img>
-
-          <img src="assets/images/icons/square.png" id="maximise" class="modify"></img>
-
-          <img src="assets/images/icons/restore.png" id="shorter" class="modify"></img>
-        
-          <img src="assets/images/icons/close.png" id="cross" class="modify"></img>
-
-        </div>
-      </div>
-      <div id="app-main">
-      </div>
-      <div id="app-hide"></div>
-    </div>
-    <script src="assets/js/script.js"></script>
-    <script src="notis.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="notis.js"></script>
 </body>
 
 </html>

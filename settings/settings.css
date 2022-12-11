@@ -1,64 +1,85 @@
-body {
-  width: 100vw;
-  height: 100vh;
+* {
+	box-sizing: border-box;
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 16px;
+  background: white;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.grid-wrapper {
+	display: grid;
+	align-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	padding: 15px 15px;
+	margin: 0 auto;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+	grid-auto-rows: min-content;
+	grid-template-columns: repeat(auto-fill, 100%);
 }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+.grid-wrapper .grid-button {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	padding: 18px 12px 18px 60px;
+	border: 1px solid transparent;
+	transition: border 0.3s linear;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+.grid-wrapper .grid-button:hover, .grid-wrapper .grid-button:active, .grid-wrapper .grid-button:focus {
+	border: 1px solid #d5d5d5;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;
+.grid-button i.material-icons {
+	position: absolute;
+    top: 12px;
+    left: 15px;
+    color: #68768a;
+    font-size: 30px;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+.grid-button h4.grid-title {
+	margin: 0 0 5px;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.84);
+	font-size: 16px;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+.grid-button p.grid-sub {
+	margin: 0 0 5px;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.54);
+	font-size: 12px;
 }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
+@media screen and (min-width: 767px) {
+	.grid-wrapper {
+		max-width: 767px;
+		grid-template-columns: repeat(auto-fill, 33.3333%);
+	}
 }
 
-.slider.round:before {
-  border-radius: 50%;
+@media screen and (min-width: 992px) {
+	.grid-wrapper {
+		max-width: 767px;
+		grid-template-columns: repeat(auto-fill, 25%);
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.grid-wrapper {
+		max-width: 1200px;
+		grid-template-columns: repeat(auto-fill, 20%);
+	}
 }

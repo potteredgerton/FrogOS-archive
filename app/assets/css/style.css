@@ -1,8 +1,9 @@
 body {
   overflow: hidden;
   font-family: sans-serif;
-  background-size: 100%;
-  background-color: steelblue;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: url("../images/wallpaper1.jpg")
 }
 
 * {
@@ -29,35 +30,6 @@ body {
 :root {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-#context-menu {
-  position: absolute;
-  display: none;
-  background-color: white;
-  border-style: solid;
-  border-color: darkgrey;
-  border-width: 2px;
-}
-
-#context-menu li {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-#context-menu a {
-  text-decoration: none;
-  color: black;
-  cursor: default;
-}
-
-#context-menu i {
-  position: absolute;
-  right: 0px;
-}
-
-#context-menu div:hover {
-  background: lightgray;
 }
 
 #container {
@@ -102,7 +74,8 @@ iframe {
 }
 
 #date {
-  display: none;
+  position: absolute;
+  transform: translateY(30px);
 }
 
 #tbarapps {
@@ -122,51 +95,6 @@ iframe {
   border-radius: 50%;
 }
 
-/* 
-Might add this back later, not sure yet.
-#brappsdiv {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 50%;
-  border-radius: 5%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.5);
-}
-
-#br-os-apps {
-  flex-direction: row;
-}
-
-.apps {
-  flex-direction: row;
-}
-
-#br-os-apps .app {
-  width: 50px;
-  height: 50px;
-  display: inline;
-  cursor: pointer;
-  padding: 5px;
-  flex-direction: row;
-}
-
-#br-os-apps .app img {
-  width: 50px;
-  height: 50px;
-  padding: 5px;
-  flex-direction: row;
-}
-
-#br-os-apps .app p {
-  color: white;
-  font-size: 14px;
-  text-align: center;
-}
-*/
 #taskbar {
   position: absolute;
   display: flexbox;
@@ -202,35 +130,19 @@ Might add this back later, not sure yet.
   background-color: lightgrey;
 }
 
-.power-off {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 55px;
-  width: 55px;
-}
-
-.settings {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 55px;
-  width: 55px;
-}
-
 .br-os-window {
     position: absolute;
-    top: 20%;
-    left: 25%;
     display: flex;
     flex-direction: column;
     width: 50%;
     height: 50%;
     border: 1px solid #eee;
-    border-radius: 10px;
     overflow: hidden;
     resize: both;
     transition-timing-function: linear;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .br-os-window .window-bar {
@@ -288,7 +200,3 @@ Might add this back later, not sure yet.
   cursor: default;
   display: inline;
 }
-
-.modify:hover {
-  background-color: rgba(199,202,207,255)
-} */

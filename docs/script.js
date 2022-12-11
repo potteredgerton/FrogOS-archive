@@ -29,7 +29,7 @@ try {
   checkRepo(repoUrl)
 }
 catch (error) {
-  alert('Error: invalid repo URL.')
+  alert('Error: invalid repo URL. Check the console for a full error')
   console.log(error)
 }
 

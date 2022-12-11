@@ -84,3 +84,7 @@ function equalfunc() {
   }
   window.parent.postMessage(noti("hey", "hey2"));
 }
+
+function clearfunc() {
+  textfield.value = "";
+}

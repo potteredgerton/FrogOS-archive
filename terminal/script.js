@@ -18,6 +18,12 @@ textarea.addEventListener("keydown", (event) => {
   }
   event.preventDefault();
   let input = textarea.value.substr(textarea.value.lastIndexOf(">") + 1).toLowerCase();
+  if (input.substr(0, 4) == "ping") {
+    print("\npong")
+  }
+  if (input.substr(0, 4) == "pong") {
+    print("\nping")
+  }
   //Print command
   if (input.substr(0, 5) == "print") {
     print("\n" + input.substr(6))
