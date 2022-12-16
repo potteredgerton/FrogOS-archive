@@ -192,6 +192,24 @@ iframe {
   overflow: auto;
 }
 
+.br-os-window.about-to-be-removed {
+  transition: 0.5s linear;
+  transform: translate(
+    calc((100vw - 75vw) / 2),
+    calc((100vh - 60vh) / 2)
+  );
+  transform-origin: bottom;
+}
+
+.br-os-window.being-removed {
+  transform:
+    translate(
+      calc((100vw - 75vw) / 2),
+      calc(100vh - 60vh)
+    )
+    scale(0);
+}
+
 .modify {
   background-color: inherit;
   height: 32px;

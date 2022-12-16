@@ -1,23 +1,21 @@
-var repoUrl = "https://frogos.app/docs/repo.json"
+var repoInput = document.getElementById("repoinput");
 
 function getJSON(url) {
-  var resp;
+  var response;
   var xmlHttp;
 
-  resp = '';
+  response = '';
   xmlHttp = new XMLHttpRequest();
 
   if (xmlHttp != null) {
     xmlHttp.open("GET", url, false);
     xmlHttp.send(null);
-    resp = xmlHttp.responseText;
+    response = xmlHttp.responseText;
   }
 
-  return resp;
+  return response;
 }
 
 function repo() {
-  var input = document.getElementById("repo");
-  var jso = getJSON(input.value);
-  localStorage.setItem("repo", JSON.stringify(jso));
+  localStorage.setItem("repo", getJSON(repoInput.value));
 }

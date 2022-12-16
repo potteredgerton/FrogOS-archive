@@ -1,0 +1,155 @@
+.notepad-container {
+  width: 780px;
+  height: 575px;
+  margin: 50px auto;
+  -webkit-box-shadow: 0 0 10px 1px #c6c6c6;
+  box-shadow: 0 0 10px 1px #c6c6c6;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1px;
+}
+.notepad-container .notepad-icon {
+  height: 20px;
+  float: left;
+  padding: 5px 5px 0 8px;
+}
+.notepad-container .title-bar {
+  height: 26px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Segoe UI", arial;
+  font-size: 12px;
+  line-height: 26px;
+  vertical-align: middle;
+}
+.notepad-container .menu-bar {
+  position: relative;
+  margin-top: 5px;
+  display: inline-block;
+  width: 100%;
+}
+.notepad-container .menu-bar ul {
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+}
+.notepad-container .menu-bar ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 12px;
+  text-align: center !important;
+}
+.notepad-container .menu-bar > ul li {
+  list-style: none;
+  font-family: "Segoe UI", arial;
+  font-size: 13px;
+  position: relative;
+  padding-bottom: 2px;
+}
+.notepad-container textarea {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  border: 1px solid #0078d7;
+  overflow: scroll;
+  overflow-x: hidden;
+  font-family: "consolas", arial;
+  font-size: 12px;
+  height: 523px;
+  resize: none;
+  position: relative;
+}
+.notepad-container textarea:focus {
+  outline: none;
+}
+.notepad-container .menu-bar .sub-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 180px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 2px 2px 1px 0 #999;
+  box-shadow: 2px 2px 1px 0 #999;
+  margin-left: -1px;
+  z-index: 5;
+  padding: 2px;
+  top: 19px;
+}
+.notepad-container .menu-bar .sub-menu li {
+  font-size: 12px;
+  width: 100%;
+  padding-bottom: 0;
+}
+.notepad-container .menu-bar > ul li {
+  display: inline-block;
+}
+.notepad-container .menu-bar > ul li a {
+  padding-left: 8px;
+  padding-right: 8px;
+  text-align: center;
+}
+.notepad-container .menu-bar > ul li a:hover {
+  background: #e5f3ff;
+  outline: 1px solid #cce8ff;
+}
+
+.menu-bar > ul li:hover ul.sub-menu {
+  display: block;
+}
+
+.notepad-container nav.menu-bar ul.nav li a {
+  display: inline-block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
+  padding-top: 0;
+}
+.notepad-container nav.menu-bar .sub-menu li a {
+  padding: 4px 4px 4px 30px !important;
+  background: transparent !important;
+  outline: none !important;
+}
+.notepad-container .menu-bar ul li:hover .sub-menu a {
+  text-align: left !important;
+}
+.notepad-container .menu-bar ul li:hover .sub-menu a:hover {
+  background: #91c9f7 !important;
+}
+
+.notepad-container .menu-bar .sub-menu .separator {
+  height: 1px;
+  padding: 0 !important;
+  margin: 2px 0 2px 0;
+  background: #ccc;
+  font-size: 0;
+}
+
+.notepad-container .menu-bar .sub-menu .separator a {
+  height: 0px !important;
+  padding: 0 !important;
+}
+
+.notepad-container .menu-bar .sub-menu .disabled {
+  color: #6d6d6d;
+  outline: none;
+}
+.notepad-container .menu-bar ul li:hover .sub-menu a.disabled:hover {
+  background: #e6e6e6 !important;
+}
+
+.notepad-container .menu-bar > ul > li:hover a {
+  background: #e5f3ff;
+  outline: 1px solid #cce8ff;
+}
+
+@media screen and (max-width: 779px) {
+  .notepad-container {
+    width: 100%;
+    overflow: hidden;
+  }
+}

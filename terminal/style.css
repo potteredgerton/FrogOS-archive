@@ -10,10 +10,6 @@ textarea {
   width: 100%;
   height: 100%;
   border: none;
-  animation: terminal-blink
-}
-
-textarea:focus {
-  background-color: black;
-  color: white;
+  animation: terminal-blink;
+  outline: none;
 }

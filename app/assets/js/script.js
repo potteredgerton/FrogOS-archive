@@ -3,35 +3,35 @@ const menu = document.querySelector("#os-ct-menu");
 const tbarapps = document.querySelector("#tbarapps");
 const taskbar = document.querySelector("#taskbar");
 const batterydiv = document.querySelector("#batterydiv");
+var ls = localStorage;
 
-var repo = {
-  "repoName": "Example Repo",
-  "repoId": "example.com",
-  "repoVer": "1",
-  "app": {
-    "appName": "Visual Studio Code",
-    "appId": "vscode",
-    "appUrl": "https://mathspace.gq/prefix/aHR0cHM6Ly92c2NvZGUuZGV2/",
-    "appIcon": "https://e1.pngegg.com/pngimages/947/906/png-clipart-clay-os-6-a-macos-icon-visual-studio-code-blue-and-white-illustration.png"
-  }
-}
-
-if (repo) {
-  create_app(repo.app.appName, repo.app.appIcon, repo.app.appId, repo.app.appUrl);
+if (localStorage.getItem("repo")) {
+  repo = JSON.parse(localStorage.getItem("repo"));
+  if (repo.apps.length == 1) {
+    createApp(repo.app.appName, repo.app.appIcon, repo.app.appId, repo.app.appUrl);
+  } else {
+    repo.apps.forEach(function(app) {
+      createApp(app.appName, app.appIcon, app.appId, app.appUrl);
+    });
+  };
 };
 
-//create_app("Browser", "assets/images/apps/chromium.png", "browser", "/browser2");
-//create_app("Tetris", "assets/images/apps/tetris.png", "tetris", "/tetris");
-create_app("Weather", "assets/images/apps/weather.png", "weather", "/weather");
-create_app("Camera", "assets/images/apps/camera.png", "camera", "/camera");
-create_app("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator");
-create_app("Terminal", "assets/images/apps/terminal.png", "term", "/terminal");
-create_app("Settings", "assets/images/apps/settings.png", "settings", "/settings", "100", "100");
+if (!localStorage.getItem("firstTime")) {
+  localStorage.setItem("firstTime", true);
+}
+
+//createApp("Browser", "assets/images/apps/chromium.png", "browser", "/browser2");
+//createApp("Tetris", "assets/images/apps/tetris.png", "tetris", "/tetris");
+createApp("Weather", "assets/images/apps/weather.png", "weather", "/weather");
+createApp("Camera", "assets/images/apps/camera.png", "camera", "/camera");
+createApp("Calculator", "assets/images/apps/calculator.png", "calculator", "/calculator");
+createApp("Tunee", "assets/images/apps/tunee.png", "tunee", "/tunee")
+createApp("Terminal", "assets/images/apps/terminal.png", "term", "/terminal");
+createApp("Settings", "assets/images/apps/settings.png", "settings", "/settings", "100", "100");
 
 function loop() {
   var date = new Date();
   var sec = date.getSeconds();
-
   setTimeout(() => {
     setInterval(() => {
       datetime()
@@ -77,7 +77,7 @@ function datetime() {
 datetime();
 loop();
 
-function create_app(name, image, id, src, height, width) {
+function createApp(name, image, id, src, height, width) {
   let img = document.createElement("img");
   let p = document.createElement("p");
   let tbarapp = document.createElement("img");
@@ -85,12 +85,12 @@ function create_app(name, image, id, src, height, width) {
   img.setAttribute("alt", name);
   tbarapp.src = image;
   tbarapp.id = id;
-  tbarapp.onclick = () => window_open(src, image, name, height, width);
+  tbarapp.onclick = () => window_open(src, image, name, id, height, width);
   p.innerText = name;
   tbarapps.appendChild(tbarapp);
 }
 
-function window_open(src, image, text, height, width) {
+function window_open(src, image, text, id, height, width) {
   let app = document.createElement("div");
   let appMain = document.createElement("div");
   let bar = document.createElement("div");
@@ -104,23 +104,28 @@ function window_open(src, image, text, height, width) {
   let buttons = document.createElement("div");
   app.style.height = height + "%";
   app.style.width = width + "%";
+  app.style.backgroundColor = "white";
   app.classList.add("br-os-window");
   bar.classList.add("window-bar");
   brand.classList.add("brand");
   buttons.classList.add("buttons");
   min.classList.add("modify");
+  min.classList.add("minimize");
   restore.classList.add("modify");
+  restore.classList.add("restore");
+  restore.style.display = "none";
   close.classList.add("modify");
+  close.classList.add("close")
   square.classList.add("modify");
-  square.classList.add("square");
+  square.classList.add("maximize");
   min.src = "assets/images/icons/minimize.png";
   restore.src = "assets/images/icons/restore.png";
   close.src = "assets/images/icons/close.png";
   square.src = "assets/images/icons/square.png";
-  min.onclick = minimize_window();
-  close.onclick = close_window(bar);
-  restore.onclick = shorter_window();
-  square.onclick = maximise_window();
+  min.onclick = () => minimize_window(app);
+  close.onclick = () => close_window(app);
+  restore.onclick = () => restore_window(app);
+  square.onclick = () => maximise_window(app);
   appMain.innerHTML = "<iframe src=" + src + "></iframe>";
   brandImage.src = image;
   p.innerText = text;
@@ -135,42 +140,38 @@ function window_open(src, image, text, height, width) {
   buttons.appendChild(close);
   document.body.appendChild(app);
   dragElement(app, bar);
-  app.addEventListener("click", checkSnap);
 }
 
-function checkSnap(e) {
-  console.log(e.style.left)
-  if (e.style.left) {
-    //
-  }
+function close_window(app) {
+  app.classList.add("about-to-be-removed");
+  app.classList.add("being-removed")
+  setTimeout(() => app.parentElement.removeChild(app), 500);
 }
 
-function close_window(a) {
-  //
-  return a;
+function minimize_window(app) {
+  app.parentElement.removeChild(app);
 }
 
-function minimize_window(d) {
-  //
-  return d;
+function maximise_window(app) {
+  app.setAttribute("data-restoreX", app.style.left);
+  app.setAttribute("data-restoreY", app.style.top);
+  app.setAttribute("data-restoreW", app.style.width);
+  app.setAttribute("data-restoreH", app.style.height);
+  app.style.height = "100vh";
+  app.style.width = "100vw";
+  app.style.top = "";
+  app.style.left = "";
+  app.querySelector(".maximize").style.display = "none";
+  app.querySelector(".restore").style.display = "inline";
 }
 
-function maximise_window(t) {
-  /*t.querySelector(".minimize").style.display = "inline";
-  t.querySelector(".maximise").style.display = "none";
-  t.style.top = 0;
-  t.style.left = 0;
-  t.style.width = "100%";
-  t.style.height = "100vh";*/
-}
-
-function shorter_window() {
-  /*open(maximise)
-  close(shorter)
-  t.style.top = os_window.restoreY
-  t.style.left = os_window.restoreX
-  t.style.width = "50%"
-  t.style.height = "50%"*/
+function restore_window(app) {
+  app.style.left = app.getAttribute("data-restoreX");
+  app.style.top = app.getAttribute("data-restoreY");
+  app.style.height = app.getAttribute("data-restoreH");
+  app.style.width = app.getAttribute("data-restoreW");
+  app.querySelector(".restore").style.display = "none";
+  app.querySelector(".maximize").style.display = "inline";
 }
 
 function power() {
@@ -184,26 +185,30 @@ function refresh() {
 function openStartMenu() {
   document.getElementById("startmenu").style.display = 'block'
 }
+
 function closeStartMenu() {
   document.getElementById("startmenu").style.display = 'none'
 }
+
 document.body.onclick = e => {
   if (e.target == document.getElementById("startmenubtn") || e.target == document.getElementById("startmenu")) {
     openStartMenu()
-  }
-  else {
+  } else {
     closeStartMenu()
   }
 }
 
 
 function dragElement(element, elementHead) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
   if (elementHead) {
     element.onmousedown = dragMouseDown;
   } else {
     element.onmousedown = dragMouseDown;
-  }
+  };
 
   function dragMouseDown(e) {
     e = e || window.event;
@@ -212,7 +217,7 @@ function dragElement(element, elementHead) {
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
-  }
+  };
 
   function elementDrag(e) {
     e = e || window.event;
@@ -223,10 +228,10 @@ function dragElement(element, elementHead) {
     pos4 = e.clientY;
     element.style.top = (element.offsetTop - pos2) + "px";
     element.style.left = (element.offsetLeft - pos1) + "px";
-  }
+  };
 
   function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
-  }
-}
+  };
+};

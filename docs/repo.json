@@ -1,12 +1,18 @@
 {
-  "repoName": "Example Repo",
-  "repoId": "example.com",
-  "repoVer": "1",
-  "appCount": "1",
-  "app": {
-    "appName": "Example",
-    "appId": "ExampleV1.0",
-    "appUrl": "https://example.com",
-    "appIcon": "https://example.com/icon.png"
-  }
+	"repoName": "repo_name",
+	"repoId": "unique_id",
+	"repoVer": "1",
+	"apps": [{
+			"appName": "first app name",
+			"appId": "app1",
+			"appUrl": "https://example.com",
+			"appIcon": "https://example.com/favicon.ico"
+		},
+		{
+			"appName": "second app name",
+			"appId": "app2",
+			"appUrl": "https://example.org",
+			"appIcon": "https://example.org/favicon.ico"
+		}
+	]
 }
